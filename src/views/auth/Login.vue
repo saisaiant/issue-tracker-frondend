@@ -67,6 +67,8 @@ export default {
         if(this.$refs.loginForm.validate()) {
           axios.post('http://issue-tracker-backend.dex/api/login', this.user)
             .then((response) => {
+              localStorage.setItem('token', response.data);
+              this.$router.push({name: 'dashboard'})
               console.log(response.data)
             })
         }
